@@ -1,0 +1,267 @@
+$colors: (
+    primary: #ffffff,
+    primary-light: #f4f4f4,
+    primary-dark: #a4a4a4,
+    accent: red,
+    secondary: #f4f4f4,
+    font-def: white,
+    font-title: #626262,
+    font-desc: #818181,
+);
+
+@function color($color-name) {
+    @return map-get($colors ,$color-name);
+  }
+
+$mini: 840px;
+
+@mixin mini {
+    @media (min-width: #{$mini}) {
+        @content;
+    }
+}
+
+$weight: (
+    thin: 100,
+    light: 300,
+    regular: 400,
+    medium: 500,
+    bold: 700,
+    black: 900,
+);
+@function weight($weight-name) {
+    @return map-get($weight ,$weight-name);
+  }
+
+/* SCSS */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: lightgray;
+
+    .headline {
+        width: 100%;
+        height: 100vh;
+        position: relative;
+        padding-top: 11em;
+        color: color(primary);
+
+        #subtitle {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: weight(bold);
+            font-size: .75em;
+            text-align: center;
+            letter-spacing: .3em;
+            margin-bottom: 1.5em;
+        }
+
+        p {
+            font-family: 'Playfair Display', serif;
+            font-size: 4em;
+            text-align: center;
+        }
+    }
+
+    .desc {
+        display: grid;
+        width: 100%;
+        height: 100%;
+        padding: 7em 3.75em 7em 3.75em;
+        grid-template-columns: repeat(3, 1fr);
+        grid-column-gap: 1em;
+        background-color: #f4f4f4;
+
+        .text {
+            float: left;
+            justify-content: center;
+
+            p {
+                font-family: 'Open Sans', sans-serif;
+                font-weight: weight(light);
+                font-size: 1em;
+                color: color(font-desc);
+            }
+
+            #title {
+                font-family: 'Lato', sans-serif;
+                font-weight: weight(bold);
+                font-size: 1.5em;
+                color: color(font-title);
+            }
+        }
+    }
+
+    .desc-2 {
+        width: 100%;
+        height: 100%;
+        display: grid;
+        padding: 7em 3.75em 7em 3.75em;
+        grid-template-columns: repeat(2, 1fr);
+        grid-column-gap: 1em;
+
+        .text {
+
+            #title {
+                font-family: 'Lato', sans-serif;
+                font-weight: weight(bold);
+                font-size: 2.5em;
+                color: color(font-title);
+            }
+
+            p {
+                font-family: 'Open Sans', sans-serif;
+                font-weight: weight(light);
+                font-size: 1em;
+                color: color(font-desc);
+            }
+        }
+
+        .image {
+            display: grid;
+            width: 100%;
+            height: 31.25em;
+            justify-content: center;
+
+            #img {
+                width: 31.25em;
+                height: 31.25em;
+            }
+        }
+    }
+
+    .featured {
+        width: 100%; 
+        height: 100%;
+        background-color: #f4f4f4;
+        padding: 2em 3.75em 2em 3.75em;
+
+        p#title {
+            font-family: 'Open Sans', sans-serif;
+            font-weight: weight(light);
+            font-size: 1em;
+            text-align: center;
+            color: color(font-desc);
+        }
+
+        .nested {
+            display: grid;
+            padding: 2em 0 2em 0;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: .5em;
+            
+            .dummy {
+                width: fit-content;
+                height: fit-content;
+                grid-column: 1/2;
+
+                #img {
+                    width: 31.25em;
+                    height: auto;
+                }
+            }
+
+            .nest2 {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                grid-gap: .5em;
+
+                .dummy2 {
+                    width: 18.75em;
+                    height: 18.75em;
+
+                    #img {
+                        width: 18.75em;
+                        height: 18.75em;
+                    }
+                }   
+            }
+        }
+
+        a {
+            font-family: 'Open Sans', sans-serif;
+            font-weight: weight(light);
+            font-size: 1em;
+            text-decoration: none;
+            color: color(font-title);
+
+            p {
+                text-align: center;
+            }
+
+            #button:hover {
+                color: color(primary-dark);
+            }
+        }
+    }
+
+    .exp {
+        width: 100%;
+        height: 100%;
+        padding: 5em 3.75em 5em 3.75em;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 1em;
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 1em;
+
+            .image {
+                background-color: white;
+                width: auto;
+                height: 640px;
+            }
+
+            .nest {
+                display: grid;
+                grid-template-columns: 1fr;
+                grid-gap: 1em;
+
+                .image2 {
+                    background-color: white;
+                    width: auto;
+                    height: auto;
+                }
+            }
+        }
+
+
+        .text {
+            padding: 0 9em 0 9em;
+            #title {
+                font-family: 'Lato', sans-serif;
+                font-weight: weight(bold);
+                font-size: 1.5em;
+                color: color(font-title);
+            }
+
+            p {
+                font-family: 'Open Sans', sans-serif;
+                font-weight: weight(light);
+                font-size: 1em;
+                color: color(font-desc);
+            }
+        }
+    }
+
+    .brands {
+        display: grid;
+        padding: 2em 3.75em 2em 3.75em;
+        grid-template-columns: repeat(4, auto);
+        grid-gap: 3em;
+        justify-content: center;
+        background-color: #f4f4f4;
+        
+        .trd {
+            background-color: white;
+            width: 15em;
+            height: 7em;
+        }
+    }
+}

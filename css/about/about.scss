@@ -1,0 +1,150 @@
+$colors: (
+    primary: #ffffff,
+    primary-light: #f4f4f4,
+    primary-dark: #a4a4a4,
+    accent: red,
+    secondary: #f4f4f4,
+    font-def: white,
+    font-title: #626262,
+    font-desc: #818181,
+);
+
+@function color($color-name) {
+    @return map-get($colors ,$color-name);
+  }
+
+$mini: 840px;
+
+@mixin mini {
+    @media (min-width: #{$mini}) {
+        @content;
+    }
+}
+
+$weight: (
+    thin: 100,
+    light: 300,
+    regular: 400,
+    medium: 500,
+    bold: 700,
+    black: 900,
+);
+@function weight($weight-name) {
+    @return map-get($weight ,$weight-name);
+  }
+
+/* SCSS */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: lightgray;
+
+    .headline {
+        width: 100%;
+        height: fit-content;
+        position: relative;
+        padding: 5em 0 5em 0;
+        color: color(primary);
+
+        #subtitle {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: weight(bold);
+            font-size: .75em;
+            text-align: center;
+            letter-spacing: .1em;
+            margin-bottom: 1.5em;
+        }
+
+        p {
+            font-family: 'Playfair Display', serif;
+            font-size: 4em;
+            text-align: center;
+        }
+    }
+
+    .desc {
+        width: 100%;
+        height: 100%;
+        display: grid;
+        padding: 7em 3.75em 7em 3.75em;
+        grid-template-columns: repeat(2, 1fr);
+        grid-column-gap: 1em;
+        background-color: #f4f4f4;
+
+        .text {
+            padding: 10em 0 10em 0;
+
+            #title {
+                font-family: 'Lato', sans-serif;
+                font-weight: weight(bold);
+                font-size: 2.5em;
+                color: color(font-title);
+            }
+
+            p {
+                font-family: 'Open Sans', sans-serif;
+                font-weight: weight(light);
+                font-size: 1em;
+                color: color(font-desc);
+            }
+        }
+
+        .image {
+            display: grid;
+            width: 100%;
+            height: 31.25em;
+            justify-content: center;
+
+            #img {
+                width: 31.25em;
+                height: 31.25em;
+            }
+        }
+    }
+
+    .desc-2 {
+        display: grid;
+        padding: 7em 3.75em 7em 3.75em;
+        grid-template-columns: repeat(2, 1fr);
+        grid-column-gap: 1em;
+
+        .text {
+            padding: 10em 0 10em 0;
+
+            #title {
+                font-family: 'Lato', sans-serif;
+                font-weight: weight(bold);
+                font-size: 2.5em;
+                color: color(font-title);
+            }
+
+            p {
+                font-family: 'Open Sans', sans-serif;
+                font-weight: weight(light);
+                font-size: 1em;
+                color: color(font-desc);
+            }
+        }
+
+        .image {
+            display: grid;
+            justify-content: center;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 1em;
+
+            #img {
+                width: 15em;
+                height: 15em;
+                border: 1px solid white;
+            }
+        }
+    }
+
+
+
+}
